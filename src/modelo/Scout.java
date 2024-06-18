@@ -32,8 +32,14 @@ public class Scout implements Serializable {
     }
 
     public Scout(Scout s){
+        this.codigo = s.codigo;
+        this.apodo = s.apodo;
+        this.nombre = s.nombre;
+        this.apellido = s.apellido;
+        this.graduacion = s.graduacion;
+                
     }
-       
+
     public Scout() {
     }
     
@@ -54,10 +60,33 @@ public class Scout implements Serializable {
 
     
     
-
     //SETERS
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+       public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setGraduacion(String graduacion) {
+        this.graduacion = graduacion;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
+
+    public void setComunidad(Comunidad comunidad) {
+        this.comunidad = comunidad;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
     
     

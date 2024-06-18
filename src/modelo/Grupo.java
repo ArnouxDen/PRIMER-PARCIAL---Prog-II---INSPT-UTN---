@@ -27,6 +27,15 @@ public class Grupo implements Serializable {
     public int getCodigo() {
         return codigo;
     }
+
+    public String getDenominacion() {
+        return denominacion;
+    }
+    
+
+    public void setDenominacion(String denominacion) {
+        this.denominacion = denominacion;
+    }
     
     
 }

@@ -1,15 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vista;
 
-/**
- * recibe por paramentros un encabezado y una matriz de datos para mostrar
- * @author Fd
- */
-public class Tabla {
-    private String encabezado;
-    private String datos[][];
-   
+import java.util.ArrayList;
+
+public class Tabla extends Formulario {
+    public Tabla(String encabezado, String[] preguntas) {
+        super(encabezado, preguntas);
+    }
+
+    public void mostrarTablaScout() {
+        // Muestra la tabla con los encabezados y espacios en blanco para los datos
+        System.out.println("\nACTIVIDADES - 2024");
+        System.out.println("FECHA | CODIGO(DE ACTIVIDAD) | DESCRIPCION(DE LA ACTIVIDAD) | ASISTENCIA(PRESENTE O AUSENTE)");
+
+        // Imprime una fila de espacios en blanco para representar una tabla vacía por ahora
+        System.out.println("      |                       |                             |                              ");
+    }
 }
+
+
+

@@ -28,5 +28,16 @@ public class Comunidad implements Serializable {
     public int getNumero() {
         return numero;
     }
+
+    public String getActPrincipal() {
+        return actPrincipal;
+    }
+    
+    
+    //SETTERS
+    public void setActPrincipal(String actPrincipal) {
+        this.actPrincipal = actPrincipal;
+    }
+    
     
 }

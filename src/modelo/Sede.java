@@ -14,22 +14,48 @@ public class Sede implements Serializable {
     private int codigo;
     private String nombre;
     private String direccion;     //????
-    private float ubicacion[];
+    private String provincia;
+    private String localidad;
     
     //constructor
-    
-    public Sede(int codigo, String nombre, String direccion, float[] ubicacion) {
+
+    public Sede(int codigo, String nombre, String direccion, String provincia, String localidad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.direccion = direccion;
-        this.ubicacion = ubicacion;
+        this.provincia = provincia;
+        this.localidad = localidad;
     }
+    
+   
     
     //geters
 
     public int getCodigo() {
         return codigo;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
+    
     
     
 }

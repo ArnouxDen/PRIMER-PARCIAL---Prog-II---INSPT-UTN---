@@ -8,12 +8,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
-
+import java.util.Iterator;
 
 /**
- * Modelo serializable de datos y logica interna. Es manejado dese controlador y
- * NO se comunica diractamente con vista
+ * Modelo serializable de datos y logica interna. Es manejado desde controlador
+ * y NO se comunica diractamente con vista
  *
  */
 public class MScoutsPoo implements Serializable {
@@ -23,7 +24,7 @@ public class MScoutsPoo implements Serializable {
     private HashMap<Integer, Sede> regSedes = new HashMap();
     private HashMap<Integer, Grupo> regGrupos = new HashMap();
     private HashMap<Integer, Comunidad> regComunidades = new HashMap();
-    private HashMap<Integer, Actividad> regActividades = new HashMap();
+    private ArrayList<Actividad> regActividades = new ArrayList();
 
     public MScoutsPoo() {
     }
@@ -37,59 +38,17 @@ public class MScoutsPoo implements Serializable {
         this.regSedes = archivo.regSedes;
     }
 
+    Calendar calendario = Calendar.getInstance();
+    //Calendar calendarionew GregorianCalendar(); 
+
     /**/
- /**/
+ /*
     public void prueba() {
-        System.out.println("aqui modelo, que tal?");
-        Scout pepe = new Scout(101, "pepe", "jose", "gomez", "castor");
-        Scout rojo = new Scout(101, "carlitos", "jose", "gomez", "lobzno");
-        Scout azul = new Scout(101, "coso", "jose", "gomez", "rober");
-        regScouts.put("Pepe", pepe);
-        regScouts.put("carlitos", rojo);
-        regScouts.put("coso", azul);
-
-        System.out.println("veo un " + regScouts.get("Pepe").getGraduacion());
-        System.out.println("veo un " + regScouts.get("carlitos").getGraduacion());
-        System.out.println("veo un " + regScouts.get("coso").getGraduacion());
-
     }
 
-    /**/
+ /*
  /**/
- /* 
- private Auto buscarAuto (String Patente){
-     Auto autoEncontrado=null;
-     Iterator<auto> it =this.autos.iterator();
-     while(it.hasNext() && autoEncontrado==null){
-         Auto a = it.next();
-         if(a.getPatente().equalsIgnoreCase(patente)){
-             autoEncontrado = a;
-         }
-     }
-     return autoEncontrado;
- } */
-    //............................................................................BUEQUEDA
-    private Scout buscarScout(String apodo) {
-        return this.regScouts.get(apodo);
-    }
-
-    private Sede buscarSede(int cod) {
-        return this.regSedes.get(cod);
-    }
-
-    private Grupo buscarGrupo(int cod) {
-        return this.regGrupos.get(cod);
-    }
-
-    private Comunidad buscarComunidad(int num) {
-        return this.regComunidades.get(num);
-    }
-
-    private Actividad buscarActividad(int cod) {              //ojo! mas de una acto por cod (dif fecha?)
-        return regActividades.get(cod);
-    }
-
-    //.............................................................................abm scout  
+    //.............................................................................METODOS SCOUTS 
     public void altaScout(String apodo, String nombre, String apellido, String graduacion) {
         int cod = regScouts.size() + 1;
         Scout scout = new Scout(cod, apodo, nombre, apellido, graduacion);
@@ -102,64 +61,199 @@ public class MScoutsPoo implements Serializable {
         if (s.getCodigo() == cod) {
             s.setCodigo(0);
         }
-
     }
 
-    public void modificacionScout() {
+    public void modificacionScout(int cod, String apodo, String nombre, String apellido, String Graduacion) {
+        Scout s = buscarScout(apodo);
+        if (s.getCodigo() == cod) {
+            s.setNombre(nombre);
+            s.setApellido(apellido);
+            s.setGraduacion(Graduacion);
+        }
     }
 
-//..............................................................................abm sede
-    public void altaSede(int codigo, String nombre, String direccion, float ubicacion[]) {
-        Sede s = new Sede(codigo, nombre, direccion, ubicacion);
+    public Scout buscarScout(String apodo) {
+        return this.regScouts.get(apodo);
+    }
+
+    public ArrayList listaScouts() {
+        ArrayList<Scout> scouts = new ArrayList(regScouts.values());
+        return scouts;
+    }
+
+//..............................................................................METODOS SEDES
+    
+    public void altaSede(String nombre, String direccion, String provincia, String localidad) {
+        int codigo = regSedes.size() + 1;
+        Sede s = new Sede(codigo, nombre, direccion, provincia, localidad);
         regSedes.put(codigo, s);
 
     }
 
-    public void bajaSede() {
+    public void bajaSede(int codigo,String nombre) {
+        Sede sede = regSedes.get(codigo);
+        if (sede.getNombre().equals(nombre))sede.setNombre(sede.getNombre().concat("->SEDE ELIMINADA"));
+
     } //OJO SCOUTS ASIGNADOS
 
-    public void ModificacionSede() {
+    public void ModificacionSede(int codigo, String nombre, String direccion, String provincia, String localodad) {
+        Sede sede = regSedes.get(codigo);
+        sede.setNombre(nombre);
+        sede.setDireccion(direccion);
+        sede.setProvincia(provincia);
+        sede.setLocalidad(localodad);
+
     }
 
-    //.............................................................................abm grupo
-    public void altaGrupo(int codigo, String denominacion) {
+    public Sede buscarSede(int cod) {
+        return this.regSedes.get(cod);
+    }
+
+    public ArrayList ListaSedes() {
+        ArrayList<Sede> sedes = new ArrayList(regSedes.values());
+        return sedes;
+    }
+
+    //.............................................................................METODOS GRUPOS
+    public void altaGrupo(String denominacion) {
+        int codigo = regGrupos.size() + 1;
         Grupo g = new Grupo(codigo, denominacion);
         regGrupos.put(codigo, g);
     }
 
-    public void bajaGrupo() {
+    public void bajaGrupo(int codigo,String denominacion) {
+        Grupo g = regGrupos.get(codigo);
+        if(g.getDenominacion().equals(denominacion))g.setDenominacion(g.getDenominacion().concat("->GRUPO SUSPENDIDO"));
+
     }//OJO SCOUTS ASIGNADOS
 
-    public void ModificacionGrupo() {
+    public void ModificacionGrupo(int codigo, String denominacion) {
+        Grupo g = regGrupos.get(codigo);
+        g.setDenominacion(denominacion);
+
     }
 
-//..............................................................................abm comunidad
-    public void altaComunidad(int numero, String actPrincipal) {
+    private Grupo buscarGrupo(int cod) {
+        return this.regGrupos.get(cod);
+    }
+
+    public ArrayList listaGrupos() {
+        ArrayList<Grupo> grupos = new ArrayList(regGrupos.values());
+        return grupos;
+    }
+
+//..............................................................................METODOS COMUNIDADES
+    public void altaComunidad(String actPrincipal) {
+        int numero = regComunidades.size() + 1;
         Comunidad c = new Comunidad(numero, actPrincipal);
         regComunidades.put(numero, c);
     }
 
-    public void bajaComunidad() {
+    public void bajaComunidad(int numero,String act) {
+        Comunidad c = regComunidades.get(numero);
+        if (c.getActPrincipal().equals(act))c.setActPrincipal(c.getActPrincipal().concat("->COMUNIDAD SUSPENDIDA"));
     }//OJO SCOUTS ASIGNADOS
 
-    public void ModificacionComunidad() {
+    public void ModificacionComunidad(int numero, String actPrincipal) {
+        Comunidad c = regComunidades.get(numero);
+        c.setActPrincipal(actPrincipal);
     }
 
-//..............................................................................abm actividad
-    public void altaActividad(int codigo, String descripcion, Calendar fecha) {
+    public Comunidad buscarComunidad(int num) {
+        return this.regComunidades.get(num);
+    }
+
+    public ArrayList listaComunidades() {
+        ArrayList<Comunidad> comunidades = new ArrayList(regComunidades.values());
+        return comunidades;
+    }
+
+//..............................................................................METODOS ACTIVIDADES
+    public void altaActividad(String descripcion, int dia, int mes, int anio) {
+        int codigo = regActividades.size() + 1;
+        calendario.set(anio, mes, dia);
+        Date fecha = calendario.getTime();
         Actividad a = new Actividad(codigo, descripcion, fecha);
-        regActividades.put(codigo, a);
+        regActividades.add(a);
     }
 
-    public void bajaActividad() {
+    public void bajaActividad(int codigo) {
+        for (Iterator<Actividad> it = regActividades.iterator(); it.hasNext();) {
+            Actividad act = it.next();
+            if (act.getCodigo() == codigo) {
+                act.setDescripcion("ACTIVIDAD SUPENDIDA");
+            }
+        }
     }
 
-    public void ModificacionActividad() {
+    public void ModificacionActividad(int codigo, String descripcion, int dia, int mes, int anio) {
+        Iterator<Actividad> it = regActividades.iterator();
+        while (it.hasNext()) {
+            Actividad act = it.next();
+            if (act.getCodigo() == codigo) {
+                act.setDescripcion(descripcion);
+                calendario.set(anio, mes, dia);
+                Date fecha = calendario.getTime();
+                act.setFecha(fecha);
+            }
+        }
     }
 
-//validar usuario y contraseña, devolver graducacion(rama/auth)
+    public Actividad buscarActividad(int cod) {
+        return regActividades.get(cod);
+    }
+
+    public ArrayList actividadesAnio(int anio) {
+        ArrayList<Actividad> actividades = new ArrayList();
+
+        Iterator<Actividad> it = regActividades.iterator();
+        while (it.hasNext()) {
+            Actividad act = it.next();
+            //calendario.clear();
+            //calendario.setTime(act.getFecha());
+            if (act.getFecha().getYear() == anio) {
+                actividades.add(act);
+            }
+        }
+        return actividades;
+    }
+
+    public ArrayList actividadesAñoPorScout(int anio, String apodo) {
+        ArrayList<Actividad> actividades = new ArrayList();
+        Scout sc = regScouts.get(apodo);
+        Iterator<Actividad> it = regActividades.iterator();
+        while (it.hasNext()) {
+            Actividad act = it.next();
+            //calendario.clear();
+            //calendario.setTime(act.getFecha());
+            if ((act.getFecha().getYear() == anio) && (act.esParticipante(sc))) {
+                actividades.add(act);
+            }
+        }
+        return actividades;
+    }
+
+    //.............................................................................METODOS USUARIOS
+    public void altaUsuario(String s, String pwd) {
+        Scout sc = buscarScout(s);
+        Usuario usr = new Usuario(sc, pwd);
+        regUsuarios.put(sc.getApodo(), usr);
+
+    }
+
+    public void bajaUsuario(String apodo) {
+        regUsuarios.remove(apodo);
+    }
+
+    public void modificacionUsuario(String s, String newPwd) {
+        Scout sc = buscarScout(s);
+        Usuario usr = regUsuarios.get(sc);
+        usr.setContraseña(newPwd);
+    }
+
+   
     public boolean validarUsuarioyContraseña(ArrayList datos) {
-        return false; //(?
+        return regUsuarios.get(datos.get(0)).validarContraseña((String) datos.get(1));
     }
 
 }
