@@ -1,14 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 import modelo.MScoutsPoo;
 
-/**
- *
- * @author Fd
- */
 public class cargaDatos {
     
  public static void cargarEn(MScoutsPoo modelo) { 
@@ -76,8 +68,8 @@ modelo.altaScout("Mandos", "Raúl", "Jordán", "Rover");
 modelo.altaScout("Nienna", "Ángel", "Borlenghi", "Rover");
 modelo.altaScout("Oromë", "José", "Ingenieros", "Rover");
 
-modelo.altaScout("Irmo", "Elisa", "Lerner", "Educador/a");
-modelo.altaScout("Tulkas", "Luis", "Soria", "Educador/a");
+modelo.altaScout("Irmo", "Elisa", "Lerner", "Educador");
+modelo.altaScout("Tulkas", "Luis", "Soria", "Educador");
 modelo.altaScout("Vairë", "David", "Cocheteux", "Educador/a");
 modelo.altaScout("Vána", "Julián", "Falcón", "Educador/a");
 modelo.altaScout("Estë", "Jacobo", "Timerman", "Educador/a");
@@ -136,13 +128,13 @@ modelo.altaScout("Caminante", "Robert", "Paulson", "Caminante");
  /*
  ACTIVIDAD
  */
- modelo.altaActividad("Formación Scout", 16, 1, 2024);
- modelo.altaActividad("Programa de Jóvenes 2", 17, 2, 2024);
- modelo.altaActividad("Liderazgo multiplicador", 18, 3, 2024);
- modelo.altaActividad("Herramientas para la gestión del Grupo Scout",19, 4, 2024);
- modelo.altaActividad("Toma de decisiones y resolución de conflictos", 20, 5, 2024);
- modelo.altaActividad("Campamento", 21, 6, 2024);
- modelo.altaActividad("Tavesia", 22, 7, 204);
+ modelo.altaActividad("Formación Scout", 16, 01, 2024);
+ modelo.altaActividad("Programa de Jóvenes 2", 17, 02, 2024);
+ modelo.altaActividad("Liderazgo multiplicador", 18, 03, 2024);
+ modelo.altaActividad("Herramientas para la gestión del Grupo Scout",19, 04, 2024);
+ modelo.altaActividad("Toma de decisiones y resolución de conflictos", 20, 05, 2024);
+ modelo.altaActividad("Campamento", 21, 06, 2024);
+ modelo.altaActividad("Tavesia", 22, 07, 2024);
                          
 /*
  

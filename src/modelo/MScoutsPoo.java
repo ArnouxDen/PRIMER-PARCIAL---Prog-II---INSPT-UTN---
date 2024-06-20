@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 import java.io.Serializable;
@@ -81,8 +77,21 @@ public class MScoutsPoo implements Serializable {
         return scouts;
     }
 
+    public ArrayList<Actividad> actividadesAnio(int anio) {
+        ArrayList<Actividad> actividades = new ArrayList<>();
+
+        for (Actividad actividad : regActividades) {
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(actividad.getFecha());
+            if (calendario.get(Calendar.YEAR) == anio) {
+                actividades.add(actividad);
+            }
+        }
+
+        return actividades;
+    }
+
 //..............................................................................METODOS SEDES
-    
     public void altaSede(String nombre, String direccion, String provincia, String localidad) {
         int codigo = regSedes.size() + 1;
         Sede s = new Sede(codigo, nombre, direccion, provincia, localidad);
@@ -90,9 +99,11 @@ public class MScoutsPoo implements Serializable {
 
     }
 
-    public void bajaSede(int codigo,String nombre) {
+    public void bajaSede(int codigo, String nombre) {
         Sede sede = regSedes.get(codigo);
-        if (sede.getNombre().equals(nombre))sede.setNombre(sede.getNombre().concat("->SEDE ELIMINADA"));
+        if (sede.getNombre().equals(nombre)) {
+            sede.setNombre(sede.getNombre().concat("->SEDE ELIMINADA"));
+        }
 
     } //OJO SCOUTS ASIGNADOS
 
@@ -121,9 +132,11 @@ public class MScoutsPoo implements Serializable {
         regGrupos.put(codigo, g);
     }
 
-    public void bajaGrupo(int codigo,String denominacion) {
+    public void bajaGrupo(int codigo, String denominacion) {
         Grupo g = regGrupos.get(codigo);
-        if(g.getDenominacion().equals(denominacion))g.setDenominacion(g.getDenominacion().concat("->GRUPO SUSPENDIDO"));
+        if (g.getDenominacion().equals(denominacion)) {
+            g.setDenominacion(g.getDenominacion().concat("->GRUPO SUSPENDIDO"));
+        }
 
     }//OJO SCOUTS ASIGNADOS
 
@@ -149,9 +162,11 @@ public class MScoutsPoo implements Serializable {
         regComunidades.put(numero, c);
     }
 
-    public void bajaComunidad(int numero,String act) {
+    public void bajaComunidad(int numero, String act) {
         Comunidad c = regComunidades.get(numero);
-        if (c.getActPrincipal().equals(act))c.setActPrincipal(c.getActPrincipal().concat("->COMUNIDAD SUSPENDIDA"));
+        if (c.getActPrincipal().equals(act)) {
+            c.setActPrincipal(c.getActPrincipal().concat("->COMUNIDAD SUSPENDIDA"));
+        }
     }//OJO SCOUTS ASIGNADOS
 
     public void ModificacionComunidad(int numero, String actPrincipal) {
@@ -176,10 +191,10 @@ public class MScoutsPoo implements Serializable {
         Actividad a = new Actividad(codigo, descripcion, fecha);
         regActividades.add(a);
     }
+//for(Actividad act : regActividades){}
 
     public void bajaActividad(int codigo) {
-        for (Iterator<Actividad> it = regActividades.iterator(); it.hasNext();) {
-            Actividad act = it.next();
+        for (Actividad act : regActividades) {
             if (act.getCodigo() == codigo) {
                 act.setDescripcion("ACTIVIDAD SUPENDIDA");
             }
@@ -199,23 +214,54 @@ public class MScoutsPoo implements Serializable {
         }
     }
 
-    public Actividad buscarActividad(int cod) {
-        return regActividades.get(cod);
-    }
-
-    public ArrayList actividadesAnio(int anio) {
-        ArrayList<Actividad> actividades = new ArrayList();
-
+    public void agrgegarParticipante(int codigo, Scout sc) {
         Iterator<Actividad> it = regActividades.iterator();
         while (it.hasNext()) {
             Actividad act = it.next();
-            //calendario.clear();
-            //calendario.setTime(act.getFecha());
-            if (act.getFecha().getYear() == anio) {
-                actividades.add(act);
+            if (act.getCodigo() == codigo) {
+                act.agregarParticipante(sc);
             }
         }
-        return actividades;
+    }
+
+    public void agrgegarParticipante(int codigo, Scout sc, String resp) {
+        Iterator<Actividad> it = regActividades.iterator();
+        while (it.hasNext()) {
+            Actividad act = it.next();
+            if (act.getCodigo() == codigo) {
+                act.agregarParticipante(sc, resp);
+            }
+        }
+    }
+
+    public void agrgegarParticipante(int codigo, Scout sc, String resp1, String resp2) {
+        Iterator<Actividad> it = regActividades.iterator();
+        while (it.hasNext()) {
+            Actividad act = it.next();
+            if (act.getCodigo() == codigo) {
+                act.agregarParticipante(sc, resp1, resp2);
+            }
+        }
+    }
+
+    public void agrgegarParticipante(int codigo, Scout sc, String resp1, String resp2, String resp3) {
+        Iterator<Actividad> it = regActividades.iterator();
+        while (it.hasNext()) {
+            Actividad act = it.next();
+            if (act.getCodigo() == codigo) {
+                act.agregarParticipante(sc, resp1, resp2, resp3);
+            }
+        }
+    }
+
+    public Actividad buscarActividad(int cod) {
+        Actividad act = null;
+        for (Actividad actividad : regActividades) {
+            if (actividad.getCodigo() == cod) {
+                act = actividad;
+            }
+        }
+        return act;
     }
 
     public ArrayList actividadesAñoPorScout(int anio, String apodo) {
@@ -251,9 +297,7 @@ public class MScoutsPoo implements Serializable {
         usr.setContraseña(newPwd);
     }
 
-   
     public boolean validarUsuarioyContraseña(ArrayList datos) {
         return regUsuarios.get(datos.get(0)).validarContraseña((String) datos.get(1));
     }
-
 }
