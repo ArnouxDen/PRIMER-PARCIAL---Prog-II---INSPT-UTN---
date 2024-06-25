@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ScoutsPoo">
+  <ClassDiagramComponents>
+    <Class name="cargaDatos" package="controlador" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="cargarEn" returnType="void" visibility="public" isStatic="true">
+          <Argument type="MScoutsPoo" name="modelo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CScoutPoo" package="controlador" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="vista" type="VScoutsPoo" visibility="package"/>
+        <Field name="modelo" type="MScoutsPoo" visibility="package"/>
+        <Field name="scanner" type="Scanner" visibility="package"/>
+        <Field name="usr" type="Usuario" visibility="package"/>
+        <Field name="nivelDeGestion" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="abrir" returnType="void" visibility="public"/>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="mostrarMenuSegunGraduacion" returnType="void" visibility="private">
+          <Argument type="String" name="graduacion"/>
+        </Method>
+        <Method name="mostrarActividadesScout" returnType="void" visibility="public">
+          <Argument type="int" name="año"/>
+        </Method>
+        <Method name="mostrarActividadesPorAño" returnType="void" visibility="public">
+          <Argument type="int" name="año"/>
+        </Method>
+        <Method name="mostrarDatosScout" returnType="void" visibility="public"/>
+        <Method name="tomarAsistencia" returnType="void" visibility="public"/>
+        <Method name="darAltaActividad" returnType="void" visibility="public"/>
+        <Method name="modificarActividad" returnType="void" visibility="public"/>
+        <Method name="darDeBajaActividad" returnType="void" visibility="public"/>
+        <Method name="agregarParticipanteActividad" returnType="void" visibility="public"/>
+        <Method name="abmScout" returnType="void" visibility="public"/>
+        <Method name="abmGrupo" returnType="void" visibility="public"/>
+        <Method name="abmSede" returnType="void" visibility="public"/>
+        <Method name="abmComunidad" returnType="void" visibility="public"/>
+        <Method name="guardar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Actividad" package="modelo" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="codigo" type="int" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="fecha" type="Date" visibility="private"/>
+        <Field name="participantes" type="ArrayList&lt;Participante&gt;" visibility="private"/>
+        <Field name="apodosScouts" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="fechaConFormato" type="SimpleDateFormat" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="descripcion"/>
+          <Argument type="Date" name="fecha"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="agregarApodoScout" returnType="void" visibility="public">
+          <Argument type="String" name="apodo"/>
+        </Method>
+        <Method name="getCodigo" returnType="int" visibility="public"/>
+        <Method name="getFecha" returnType="Date" visibility="public"/>
+        <Method name="getFechaConFormato" returnType="String" visibility="public"/>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="setFecha" returnType="void" visibility="public">
+          <Argument type="Date" name="fecha"/>
+        </Method>
+        <Method name="setParticipantes" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Participante&gt;" name="participantes"/>
+        </Method>
+        <Method name="getParticipante" returnType="Participante" visibility="public">
+          <Argument type="Scout" name="scout"/>
+        </Method>
+        <Method name="getParticipantes" returnType="ArrayList&lt;Participante&gt;" visibility="public"/>
+        <Method name="agregarParticipante" returnType="void" visibility="public">
+          <Argument type="Scout" name="scout"/>
+        </Method>
+        <Method name="agregarParticipante" returnType="void" visibility="public">
+          <Argument type="Scout" name="scout"/>
+          <Argument type="String" name="responsabilidad"/>
+        </Method>
+        <Method name="agregarParticipante" returnType="void" visibility="public">
+          <Argument type="Scout" name="scout"/>
+          <Argument type="String" name="resp1"/>
+          <Argument type="String" name="resp2"/>
+        </Method>
+        <Method name="agregarParticipante" returnType="void" visibility="public">
+          <Argument type="Scout" name="scout"/>
+          <Argument type="String" name="resp1"/>
+          <Argument type="String" name="resp2"/>
+          <Argument type="String" name="resp3"/>
+        </Method>
+        <Method name="esParticipante" returnType="boolean" visibility="public">
+          <Argument type="Scout" name="s"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Comunidad" package="modelo" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private" isFinal="true"/>
+        <Field name="actPrincipal" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="numero"/>
+          <Argument type="String" name="actPrincipal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNumero" returnType="int" visibility="public"/>
+        <Method name="getActPrincipal" returnType="String" visibility="public"/>
+        <Method name="setActPrincipal" returnType="void" visibility="public">
+          <Argument type="String" name="actPrincipal"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Grupo" package="modelo" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="codigo" type="int" visibility="private" isFinal="true"/>
+        <Field name="denominacion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="denominacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCodigo" returnType="int" visibility="public"/>
+        <Method name="getDenominacion" returnType="String" visibility="public"/>
+        <Method name="setDenominacion" returnType="void" visibility="public">
+          <Argument type="String" name="denominacion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MScoutsPoo" package="modelo" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="regUsuarios" type="HashMap&lt;String, Usuario&gt;" visibility="private"/>
+        <Field name="regScouts" type="HashMap&lt;String, Scout&gt;" visibility="private"/>
+        <Field name="regSedes" type="HashMap&lt;Integer, Sede&gt;" visibility="private"/>
+        <Field name="regGrupos" type="HashMap&lt;Integer, Grupo&gt;" visibility="private"/>
+        <Field name="regComunidades" type="HashMap&lt;Integer, Comunidad&gt;" visibility="private"/>
+        <Field name="regActividades" type="ArrayList&lt;Actividad&gt;" visibility="private"/>
+        <Field name="calendario" type="Calendar" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="MScoutsPoo" name="archivo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="altaScout" returnType="void" visibility="public">
+          <Argument type="String" name="apodo"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="graduacion"/>
+        </Method>
+        <Method name="altaScout" returnType="void" visibility="public">
+          <Argument type="String" name="apodo"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="graduacion"/>
+          <Argument type="int" name="codGrupo"/>
+          <Argument type="int" name="codSede"/>
+          <Argument type="int" name="numComunidad"/>
+        </Method>
+        <Method name="bajaScout" returnType="void" visibility="public">
+          <Argument type="int" name="cod"/>
+          <Argument type="String" name="apodo"/>
+        </Method>
+        <Method name="modificacionScout" returnType="void" visibility="public">
+          <Argument type="String" name="apodo"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="Graduacion"/>
+          <Argument type="int" name="codSede"/>
+        </Method>
+        <Method name="buscarScout" returnType="Scout" visibility="public">
+          <Argument type="String" name="apodo"/>
+        </Method>
+        <Method name="listaScouts" returnType="ArrayList" visibility="public"/>
+        <Method name="actividadesAnio" returnType="ArrayList&lt;Actividad&gt;" visibility="public">
+          <Argument type="int" name="anio"/>
+        </Method>
+        <Method name="altaSede" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="provincia"/>
+          <Argument type="String" name="localidad"/>
+        </Method>
+        <Method name="bajaSede" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="ModificacionSede" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="provincia"/>
+          <Argument type="String" name="localodad"/>
+        </Method>
+        <Method name="buscarSede" returnType="Sede" visibility="public">
+          <Argument type="int" name="cod"/>
+        </Method>
+        <Method name="listaSedes" returnType="ArrayList" visibility="public"/>
+        <Method name="altaGrupo" returnType="void" visibility="public">
+          <Argument type="String" name="denominacion"/>
+        </Method>
+        <Method name="bajaGrupo" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="denominacion"/>
+        </Method>
+        <Method name="ModificacionGrupo" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="denominacion"/>
+        </Method>
+        <Method name="buscarGrupo" returnType="Grupo" visibility="private">
+          <Argument type="int" name="cod"/>
+        </Method>
+        <Method name="listaGrupos" returnType="ArrayList" visibility="public"/>
+        <Method name="altaComunidad" returnType="void" visibility="public">
+          <Argument type="String" name="actPrincipal"/>
+        </Method>
+        <Method name="bajaComunidad" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+          <Argument type="String" name="act"/>
+        </Method>
+        <Method name="ModificacionComunidad" returnType="void" visibility="public">
+          <Argument type="int" name="numero"/>
+          <Argument type="String" name="actPrincipal"/>
+        </Method>
+        <Method name="buscarComunidad" returnType="Comunidad" visibility="public">
+          <Argument type="int" name="num"/>
+        </Method>
+        <Method name="listaComunidades" returnType="ArrayList" visibility="public"/>
+        <Method name="altaActividad" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+          <Argument type="int" name="dia"/>
+          <Argument type="int" name="mes"/>
+          <Argument type="int" name="anio"/>
+        </Method>
+        <Method name="bajaActividad" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+        </Method>
+        <Method name="modificacionActividad" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="descripcion"/>
+          <Argument type="int" name="dia"/>
+          <Argument type="int" name="mes"/>
+          <Argument type="int" name="anio"/>
+        </Method>
+        <Method name="getParticipantesDeActividad" returnType="ArrayList&lt;Participante&gt;" visibility="public">
+          <Argument type="int" name="codigoActividad"/>
+        </Method>
+        <Method name="agregarParticipante" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="Scout" name="sc"/>
+        </Method>
+        <Method name="agregarParticipante" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="Scout" name="sc"/>
+          <Argument type="String" name="resp"/>
+        </Method>
+        <Method name="agregarParticipante" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="Scout" name="sc"/>
+          <Argument type="String" name="resp1"/>
+          <Argument type="String" name="resp2"/>
+        </Method>
+        <Method name="agrgegarParticipante" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="Scout" name="sc"/>
+          <Argument type="String" name="resp1"/>
+          <Argument type="String" name="resp2"/>
+          <Argument type="String" name="resp3"/>
+        </Method>
+        <Method name="buscarActividad" returnType="Actividad" visibility="public">
+          <Argument type="int" name="cod"/>
+        </Method>
+        <Method name="actividadesAñoPorScout" returnType="ArrayList" visibility="public">
+          <Argument type="int" name="anio"/>
+          <Argument type="String" name="apodo"/>
+        </Method>
+        <Method name="altaUsuario" returnType="void" visibility="public">
+          <Argument type="String" name="s"/>
+          <Argument type="String" name="pwd"/>
+        </Method>
+        <Method name="bajaUsuario" returnType="void" visibility="public">
+          <Argument type="String" name="apodo"/>
+        </Method>
+        <Method name="modificacionUsuario" returnType="void" visibility="public">
+          <Argument type="String" name="s"/>
+          <Argument type="String" name="newPwd"/>
+        </Method>
+        <Method name="validarUsuarioyContraseña" returnType="boolean" visibility="public">
+          <Argument type="ArrayList" name="datos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Participante" package="modelo" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="asistencia" type="String" visibility="private"/>
+        <Field name="responsabilidades" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="observaciones" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Scout" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAsistencia" returnType="String" visibility="public"/>
+        <Method name="getResponsabilidades" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="getDevolucion" returnType="String" visibility="public"/>
+        <Method name="setAsistencia" returnType="void" visibility="public">
+          <Argument type="String" name="asistencia"/>
+        </Method>
+        <Method name="setResponsabilidades" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;String&gt;" name="responsabilidades"/>
+        </Method>
+        <Method name="asignarResponsabilidad" returnType="void" visibility="public">
+          <Argument type="String" name="responsabilidad"/>
+        </Method>
+        <Method name="setDevolucion" returnType="void" visibility="public">
+          <Argument type="String" name="devolucion"/>
+        </Method>
+        <Method name="getScout" returnType="Scout" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Scout" package="modelo" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="codigo" type="int" visibility="private"/>
+        <Field name="apodo" type="String" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="graduacion" type="String" visibility="private"/>
+        <Field name="grupo" type="Grupo" visibility="private"/>
+        <Field name="sede" type="Sede" visibility="private"/>
+        <Field name="comunidad" type="Comunidad" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="apodo"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="graduacion"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="apodo"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="graduacion"/>
+          <Argument type="Grupo" name="grupo"/>
+          <Argument type="Sede" name="sede"/>
+          <Argument type="Comunidad" name="comunidad"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Scout" name="s"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getGraduacion" returnType="String" visibility="public"/>
+        <Method name="getCodigo" returnType="int" visibility="public"/>
+        <Method name="getApodo" returnType="String" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="getSede" returnType="Sede" visibility="public"/>
+        <Method name="getComunidad" returnType="Comunidad" visibility="public"/>
+        <Method name="getGrupo" returnType="Grupo" visibility="public"/>
+        <Method name="setCodigo" returnType="void" visibility="public">
+          <Argument type="int" name="codigo"/>
+        </Method>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="setGraduacion" returnType="void" visibility="public">
+          <Argument type="String" name="graduacion"/>
+        </Method>
+        <Method name="setSede" returnType="void" visibility="public">
+          <Argument type="Sede" name="sede"/>
+        </Method>
+        <Method name="setComunidad" returnType="void" visibility="public">
+          <Argument type="Comunidad" name="comunidad"/>
+        </Method>
+        <Method name="setGrupo" returnType="void" visibility="public">
+          <Argument type="Grupo" name="grupo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Sede" package="modelo" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="codigo" type="int" visibility="private" isFinal="true"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="provincia" type="String" visibility="private"/>
+        <Field name="localidad" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="codigo"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="provincia"/>
+          <Argument type="String" name="localidad"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCodigo" returnType="int" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="getProvincia" returnType="String" visibility="public"/>
+        <Method name="getLocalidad" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="setProvincia" returnType="void" visibility="public">
+          <Argument type="String" name="provincia"/>
+        </Method>
+        <Method name="setLocalidad" returnType="void" visibility="public">
+          <Argument type="String" name="localidad"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Usuario" package="modelo" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="contraseña" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Scout" name="s"/>
+          <Argument type="String" name="contraseña"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="validarContraseña" returnType="boolean" visibility="public">
+          <Argument type="String" name="pwd"/>
+        </Method>
+        <Method name="setContraseña" returnType="void" visibility="public">
+          <Argument type="String" name="contraseña"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ScoutsPoo" package="scoutspoo" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Constantes" package="vista" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="BIENVENIDA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="HEADER_INICIO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="HEADER_MENU_SCOUTS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="HEADER_MENU_ROVER" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="HEADER_MENU_EDUCADOR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="HEADER_MENU_PRINCIPAL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="HEADER_NEW_USUARIO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACCESO_DENEGADO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="GRADUACION_NO_RECONOCIDA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ERR_OPC_INVALIDA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACTIVIDAD_SUSPENDIDA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACTIVIDAD_SUSPENDIDA_BAJA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACTIVIDAD_DADA_BAJA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="NO_SE_ENCONTRO_ACTIVIDAD" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="SCOUT_NO_ENCONTRADO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACTIVIDAD_NO_ENCONTRADA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PRESIONE_ENTER" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="OPERACION_CANCELADA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACTIVIDAD_ALTA_CANCELADA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ACTIVIDAD_ALTA_EXITOSA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="INGRESE_NUM" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PASS_VACIO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="APODO_VACIO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ING_OPC" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="SEL_OPC" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="SALIR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="SALIR_GUARDAR" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PARTICIPANTE_AGREGADO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="VER_DATOS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="VER_ACT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CREAR_ACT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MOD_ACT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="BAJA_ACT" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ASIG_PART" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="INICIO_SESION" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CREAR_NEW_USUARIO" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CONFIRMAR_OPERACION" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CONFIRMAR_BAJA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="CONFIRMAR_MOD" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="ALTA_EXITOSA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="BAJA_EXITOSA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="VER_LISTA_DE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DAR_ALTA_NUEVA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="DAR_BAJA" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="MODIF_DATOS" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Formulario" package="vista" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="encabezado" type="String" visibility="private"/>
+        <Field name="preguntas" type="String" visibility="private"/>
+        <Field name="respuestas" type="ArrayList&lt;String&gt;" visibility="private" isFinal="true"/>
+        <Field name="scanner" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="encabezado"/>
+          <Argument type="String[]" name="preguntas"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="inicioSesion" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="nuevoUsuario" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="nuevaActividad" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="agregarParticipante" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="mostrar" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="altaScout" returnType="ArrayList" visibility="public">
+          <Argument type="ArrayList&lt;Scout&gt;" name="listaScouts"/>
+        </Method>
+        <Method name="bajaScout" returnType="ArrayList" visibility="public"/>
+        <Method name="modificacionDatosScout" returnType="ArrayList" visibility="public">
+          <Argument type="Scout" name="scout"/>
+        </Method>
+        <Method name="altaGrupo" returnType="ArrayList" visibility="public"/>
+        <Method name="bajaGrupo" returnType="ArrayList" visibility="public"/>
+        <Method name="modificacionDatosGrupo" returnType="ArrayList" visibility="public">
+          <Argument type="ArrayList&lt;Grupo&gt;" name="listaGrupos"/>
+        </Method>
+        <Method name="altaSede" returnType="ArrayList" visibility="public"/>
+        <Method name="bajaSede" returnType="ArrayList" visibility="public"/>
+        <Method name="modificacionDatosSede" returnType="ArrayList" visibility="public">
+          <Argument type="ArrayList&lt;Sede&gt;" name="listaSedes"/>
+        </Method>
+        <Method name="altaComunidad" returnType="ArrayList" visibility="public"/>
+        <Method name="bajaComunidad" returnType="ArrayList" visibility="public"/>
+        <Method name="modificacionDatosComunidad" returnType="ArrayList" visibility="public">
+          <Argument type="ArrayList&lt;Comunidad&gt;" name="listaComunidades"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Menu" package="vista" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="scanner" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="inicio" returnType="int" visibility="public"/>
+        <Method name="opcionesScout" returnType="int" visibility="public"/>
+        <Method name="opcionesRover" returnType="int" visibility="public"/>
+        <Method name="opcionesEducador" returnType="int" visibility="public"/>
+        <Method name="opcionesModificacionActividad" returnType="int" visibility="public"/>
+        <Method name="opcionesAbmScout" returnType="int" visibility="public"/>
+        <Method name="opcionesAbmGrupos" returnType="int" visibility="public"/>
+        <Method name="opcionesAbmSede" returnType="int" visibility="public"/>
+        <Method name="opcionesAbmComunidad" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Tabla" package="vista" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="scanner" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="mostrarTablaScout" returnType="void" visibility="public"/>
+        <Method name="datosScout" returnType="void" visibility="public">
+          <Argument type="Scout" name="scout"/>
+        </Method>
+        <Method name="actividadesScout" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Actividad&gt;" name="actividades"/>
+        </Method>
+        <Method name="detalleActividad" returnType="void" visibility="public">
+          <Argument type="Actividad" name="actividad"/>
+        </Method>
+        <Method name="listaScouts" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Scout&gt;" name="listaScouts"/>
+        </Method>
+        <Method name="listaGrupos" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Grupo&gt;" name="listaGrupos"/>
+        </Method>
+        <Method name="listaSedes" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Sede&gt;" name="listaSedes"/>
+        </Method>
+        <Method name="listaComunidades" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Comunidad&gt;" name="listaComunidades"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VScoutsPoo" package="vista" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="scanner" type="Scanner" visibility="package"/>
+        <Field name="menu" type="Menu" visibility="package"/>
+        <Field name="tabla" type="Tabla" visibility="package"/>
+        <Field name="formulario" type="Formulario" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="menuInicial" returnType="int" visibility="public"/>
+        <Method name="formInicioSesion" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="menuScouts" returnType="int" visibility="public"/>
+        <Method name="menuRovers" returnType="int" visibility="public"/>
+        <Method name="menuEducador" returnType="int" visibility="public"/>
+        <Method name="formNuevoUsuario" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="solicitarAño" returnType="Integer" visibility="public"/>
+        <Method name="mostrarActividadesScout" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Actividad&gt;" name="actividades"/>
+        </Method>
+        <Method name="mostrarDetallesActividad" returnType="void" visibility="public">
+          <Argument type="Actividad" name="actividad"/>
+        </Method>
+        <Method name="mostrarDatosScout" returnType="void" visibility="public">
+          <Argument type="Scout" name="scout"/>
+        </Method>
+        <Method name="formNuevaActividad" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="formularioAgregarParticipante" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="solicitarCodigoActividad" returnType="Integer" visibility="public"/>
+        <Method name="mostrarMenuModificacion" returnType="int" visibility="public"/>
+        <Method name="confirmarBajaActividad" returnType="boolean" visibility="public"/>
+        <Method name="modificarActividad" returnType="Actividad" visibility="public">
+          <Argument type="Actividad" name="actividad"/>
+        </Method>
+        <Method name="confirmarModificarActividad" returnType="boolean" visibility="public"/>
+        <Method name="mostrarMensaje" returnType="void" visibility="public">
+          <Argument type="String" name="mensaje"/>
+        </Method>
+        <Method name="menuAbmScout" returnType="int" visibility="public"/>
+        <Method name="mostrarListadoScouts" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Scout&gt;" name="listaScouts"/>
+        </Method>
+        <Method name="formularioAltaScout" returnType="ArrayList" visibility="public">
+          <Argument type="ArrayList&lt;Scout&gt;" name="listaScouts"/>
+          <Argument type="ArrayList&lt;Grupo&gt;" name="listaGrupos"/>
+          <Argument type="ArrayList&lt;Sede&gt;" name="listaSedes"/>
+          <Argument type="ArrayList&lt;Comunidad&gt;" name="listaComunidades"/>
+        </Method>
+        <Method name="formularioBajaScout" returnType="ArrayList" visibility="public"/>
+        <Method name="formularioModificacionDatosScout" returnType="ArrayList" visibility="public">
+          <Argument type="ArrayList&lt;Scout&gt;" name="listaScouts"/>
+        </Method>
+        <Method name="menuAbmGrupo" returnType="int" visibility="public"/>
+        <Method name="mostrarListadoGrupos" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Grupo&gt;" name="listaGrupos"/>
+        </Method>
+        <Method name="formularioAltaGrupo" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="formularioBajaGrupo" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="formularioModificacionDatosGrupo" returnType="ArrayList&lt;String&gt;" visibility="public">
+          <Argument type="ArrayList&lt;Grupo&gt;" name="listaGrupos"/>
+        </Method>
+        <Method name="mostrarListadoSedes" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Sede&gt;" name="listaSedes"/>
+        </Method>
+        <Method name="menuAbmSede" returnType="int" visibility="public"/>
+        <Method name="formularioAltaSede" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="formularioBajaSede" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="mostrarListadoComunidades" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Comunidad&gt;" name="listaComunidades"/>
+        </Method>
+        <Method name="formularioModificacionDatosSede" returnType="ArrayList&lt;String&gt;" visibility="public">
+          <Argument type="ArrayList&lt;Sede&gt;" name="listaSedes"/>
+        </Method>
+        <Method name="menuAbmComunidad" returnType="int" visibility="public"/>
+        <Method name="formularioAltaComunidad" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="formularioBajaComunidad" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="formularioModificacionDatosComunidad" returnType="ArrayList&lt;String&gt;" visibility="public">
+          <Argument type="ArrayList&lt;Comunidad&gt;" name="listaComunidades"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="modelo.Scout" target="modelo.Comunidad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Actividad" target="modelo.Scout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Tabla" target="modelo.Grupo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="regScouts" source="modelo.MScoutsPoo" target="modelo.Scout" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Scout&gt;"/>
+    <UseRelation source="modelo.MScoutsPoo" target="modelo.Sede" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.VScoutsPoo" target="modelo.Grupo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="modelo.Usuario" target="modelo.Scout"/>
+    <UseRelation source="modelo.MScoutsPoo" target="modelo.Scout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vista" source="controlador.CScoutPoo" target="vista.VScoutsPoo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="regUsuarios" source="modelo.MScoutsPoo" target="modelo.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, Usuario&gt;"/>
+    <UseRelation source="modelo.Participante" target="modelo.Scout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Tabla" target="modelo.Actividad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Formulario" target="modelo.Scout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Scout" target="modelo.Sede" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Formulario" target="modelo.Grupo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Tabla" target="modelo.Comunidad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tabla" source="vista.VScoutsPoo" target="vista.Tabla" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="modelo.Participante" target="modelo.Scout"/>
+    <HasRelation name="formulario" source="vista.VScoutsPoo" target="vista.Formulario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sede" source="modelo.Scout" target="modelo.Sede" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="comunidad" source="modelo.Scout" target="modelo.Comunidad" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="menu" source="vista.VScoutsPoo" target="vista.Menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.MScoutsPoo" target="modelo.Comunidad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.MScoutsPoo" target="modelo.Participante" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.MScoutsPoo" target="modelo.Actividad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="modelo" source="controlador.CScoutPoo" target="modelo.MScoutsPoo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Actividad" target="modelo.Participante" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="regComunidades" source="modelo.MScoutsPoo" target="modelo.Comunidad" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;Integer, Comunidad&gt;"/>
+    <UseRelation source="vista.Tabla" target="modelo.Sede" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.VScoutsPoo" target="modelo.Scout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.MScoutsPoo" target="modelo.Grupo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.VScoutsPoo" target="modelo.Sede" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="regSedes" source="modelo.MScoutsPoo" target="modelo.Sede" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;Integer, Sede&gt;"/>
+    <HasRelation name="regActividades" source="modelo.MScoutsPoo" target="modelo.Actividad" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Actividad&gt;"/>
+    <HasRelation name="usr" source="controlador.CScoutPoo" target="modelo.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.VScoutsPoo" target="modelo.Actividad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="participantes" source="modelo.Actividad" target="modelo.Participante" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Participante&gt;"/>
+    <UseRelation source="vista.VScoutsPoo" target="modelo.Comunidad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="regGrupos" source="modelo.MScoutsPoo" target="modelo.Grupo" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;Integer, Grupo&gt;"/>
+    <UseRelation source="modelo.Scout" target="modelo.Grupo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Formulario" target="modelo.Sede" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Formulario" target="modelo.Comunidad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="grupo" source="modelo.Scout" target="modelo.Grupo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vista.Tabla" target="modelo.Scout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.cargaDatos" target="scoutspoo.ScoutsPoo" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
