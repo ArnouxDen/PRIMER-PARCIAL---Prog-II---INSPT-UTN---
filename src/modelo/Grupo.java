@@ -1,29 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 import java.io.Serializable;
 
 /**
+ * La clase grupo presenta código y denominación segun requerimientos
  *
- * @author Fd
  */
-public class Grupo implements Serializable {
-    private int codigo;
-    private String denominacion;
-    
-    //CONSTRUCTOR
 
+public class Grupo implements Serializable {
+
+    private final int codigo;
+    private String denominacion;
+
+    //CONSTRUCTOR
     public Grupo(int codigo, String denominacion) {
         this.codigo = codigo;
         this.denominacion = denominacion;
     }
-    
-    
-    //GETTERS
 
+    //GETTERS
     public int getCodigo() {
         return codigo;
     }
@@ -31,11 +26,8 @@ public class Grupo implements Serializable {
     public String getDenominacion() {
         return denominacion;
     }
-    
 
     public void setDenominacion(String denominacion) {
         this.denominacion = denominacion;
     }
-    
-    
 }

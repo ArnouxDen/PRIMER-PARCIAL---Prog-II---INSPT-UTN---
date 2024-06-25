@@ -1,5 +1,9 @@
 package controlador;
 import modelo.MScoutsPoo;
+/**
+ * 
+ * clase para cargar datos de prueba
+ */
 
 public class cargaDatos {
     
@@ -135,6 +139,11 @@ modelo.altaScout("Caminante", "Robert", "Paulson", "Caminante");
  modelo.altaActividad("Toma de decisiones y resolución de conflictos", 20, 05, 2024);
  modelo.altaActividad("Campamento", 21, 06, 2024);
  modelo.altaActividad("Tavesia", 22, 07, 2024);
+ 
+ 
+ modelo.agregarParticipante(1, modelo.buscarScout("hoja"));
+ modelo.agregarParticipante(1, modelo.buscarScout("salto"),"fogon primer dia");
+ modelo.agregarParticipante(1, modelo.buscarScout("luz"),"logistica campamento", "dinamica lúdica segundo dia");
                          
 /*
  

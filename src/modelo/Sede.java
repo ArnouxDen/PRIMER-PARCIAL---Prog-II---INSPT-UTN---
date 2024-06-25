@@ -1,24 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 import java.io.Serializable;
 
 /**
+ * La clase sede presenta, segun requerimientos, nombre direccion y ubicacion. En
+ * versiones iniciales del sistema se propuso registrar esta ultima en
+ * coordenada geodesicas [int,int] pero dadas la propuesta de vista por consola,
+ * resultaba mas claro utilizar direccion, provincia, y localidad.
  *
- * @author Fd
  */
 public class Sede implements Serializable {
-    private int codigo;
+
+    private final int codigo;
     private String nombre;
-    private String direccion;     //????
+    private String direccion;
     private String provincia;
     private String localidad;
-    
-    //constructor
 
+    //constructor
     public Sede(int codigo, String nombre, String direccion, String provincia, String localidad) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -26,11 +25,8 @@ public class Sede implements Serializable {
         this.provincia = provincia;
         this.localidad = localidad;
     }
-    
-   
-    
-    //geters
 
+    //geters
     public int getCodigo() {
         return codigo;
     }
@@ -38,7 +34,18 @@ public class Sede implements Serializable {
     public String getNombre() {
         return nombre;
     }
-    
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public String getLocalidad() {
+        return localidad;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -55,7 +62,4 @@ public class Sede implements Serializable {
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
-    
-    
-    
 }

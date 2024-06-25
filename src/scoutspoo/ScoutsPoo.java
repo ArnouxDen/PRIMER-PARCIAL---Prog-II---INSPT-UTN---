@@ -1,5 +1,6 @@
 /*
                     PRIMER PARCIAL (Límite para la entrega: 18/06/2024 – 19:00)
+                                              reprogramado: 25/06/2024  -19:00
 
 Scouts de Argentina (scouts.org.ar)
 
@@ -46,12 +47,12 @@ import controlador.CScoutPoo;
 
 /**
  *
- * @author Fd
+ * @authors Fd && DD
  */
 public class ScoutsPoo {
 
     /**
-     * @param args the command line arguments
+     * @param L
      */
     public static void main(String[] args) {
         CScoutPoo ctrl = new CScoutPoo(); 
